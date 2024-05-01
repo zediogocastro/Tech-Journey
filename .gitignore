@@ -1,1 +1,4 @@
 *.db
+*.egg-info
+build/
+dist/

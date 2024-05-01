@@ -1,6 +1,6 @@
-from text_analyzer import sum_counters
+import text_analyzer as ta
 from collections import Counter
 
 words_counter = [Counter("abca"), Counter("aaa")]
-summed_counters = sum_counters(words_counter)
+summed_counters = ta.sum_counters(words_counter)
 print(summed_counters)
