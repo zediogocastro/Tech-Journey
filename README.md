@@ -5,9 +5,9 @@ Welcome to my learning repository! This space contains a variety of projects and
 ## 🚢 Deploy ML Models
 
 This project focuses on deploying ML Models. It covers:
-- **Saving Loading the model**
+- **Saving and Loading the model**
 - **Web services: Flask**
-- **Python virtual Environment**
+- **Python virtual Environment: Pipenv**
 - **Environment Management: Docker**
 - **Deployment to the cloud: AWS Elastic Beanstalk**
 
