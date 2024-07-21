@@ -1,4 +1,10 @@
 *.db
 *.egg-info
+*.csv
+*.bin
+*.pyc
 build/
 dist/
+/learn/learn_ML_deployment/data
+/learn/learn_ML_deployment/models
+/learn/learn_DataApp/postgres_data
