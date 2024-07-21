@@ -2,6 +2,16 @@
 
 Welcome to my learning repository! This space contains a variety of projects and materials documenting my journey through data science, computing, and software development. Below, you'll find details on each project and resources that contribute to my learning.
 
+## 🚢 Deploy ML Models
+
+This project focuses on deploying ML Models. It covers:
+- **Saving Loading the model**
+- **Web services: Flask**
+- **Python virtual Environment**
+- **Environment Management: Docker**
+- **Deployment to the cloud: AWS Elastic Beanstalk**
+
+
 ## 📦 Learn Modules
 
 This project focuses on creating and managing Python packages. It covers:
@@ -23,7 +33,7 @@ This project delves into the basics of SQL and database management, including:
 I plan to continue expanding this repository with more projects and materials. Upcoming areas include:
 
 - **Web Development**: Creating web applications and APIs.
-- **Advanced Python**: Exploring advanced features and patterns.
+- **Advance ML Systems**: Exploring advanced features.
 
 Feel free to explore and share any feedback!
 
