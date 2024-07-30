@@ -6,10 +6,10 @@ Welcome to my learning repository! This space contains a variety of projects and
 
 This project focuses on deploying ML Models. It covers:
 - **Saving and Loading the model**
-- **Web services: Flask**
-- **Python virtual Environment: Pipenv**
-- **Environment Management: Docker**
-- **Deployment to the cloud: AWS Elastic Beanstalk**
+- **Web services:** Flask
+- **Python virtual Environment:** Pipenv
+- **Environment Management:** Docker
+- **Deployment to the cloud:** AWS Elastic Beanstalk
 
 
 ## 📦 Learn Modules
@@ -30,10 +30,7 @@ This project delves into the basics of SQL and database management, including:
 
 ## 🚀 What's Next?
 
-I plan to continue expanding this repository with more projects and materials. Upcoming areas include:
-
-- **Web Development**: Creating web applications and APIs.
-- **Advance ML Systems**: Exploring advanced features.
+I plan to continue expanding this repository with more projects and materials.
 
 Feel free to explore and share any feedback!
 
