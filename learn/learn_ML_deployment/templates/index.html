@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn Prediction</title>
+</head>
+<body>
+    <h1>Churn Prediction</h1>
+    <form id="churn-form">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br><br>
+
+        <!-- Add more fields as needed -->
+        <label for="seniorcitizen">Senior Citizen:</label>
+        <input type="number" id="seniorcitizen" name="seniorcitizen">
+        <br><br>
+        <label for="partner">Partner:</label>
+        <select id="partner" name="partner">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="dependents">Dependents:</label>
+        <select id="dependents" name="dependents">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="phoneservice">Phone Service:</label>
+        <select id="phoneservice" name="phoneservice">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="multiplelines">Multiple Lines:</label>
+        <select id="multiplelines" name="multiplelines">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="no_phone_service">No Phone Service</option>
+        </select>
+        <br><br>
+        <label for="internetservice">Internet Service:</label>
+        <select id="internetservice" name="internetservice">
+            <option value="dsl">DSL</option>
+            <option value="fiber_optic">Fiber Optic</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="onlinesecurity">Online Security:</label>
+        <select id="onlinesecurity" name="onlinesecurity">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="onlinebackup">Online Backup:</label>
+        <select id="onlinebackup" name="onlinebackup">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br><br>
+        <label for="monthlycharges">Monthly Charges:</label>
+        <input type="number" id="monthlycharges" name="monthlycharges">
+        <br><br>
+        <label for="totalcharges">Total Charges:</label>
+        <input type="number" id="totalcharges" name="totalcharges">
+        <br><br>
+        <button type="button" onclick="predictChurn()">Predict</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        async function predictChurn() {
+            const form = document.getElementById('churn-form');
+            const formData = new FormData(form);
+            const json = Object.fromEntries(formData.entries());
+
+            console.log("Form Data:", json);
+
+            const response = await fetch('http://localhost:9696/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(json)
+            });
+            console.log("Response status:", response.status);
+
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById('result').innerText = `Churn Probability: ${result.churn_probability.toFixed(2)}\nChurn: ${result.churn}`;
+            } else {
+                const error = await response.json();
+                document.getElementById('result').innerText = `Error: ${error.error}`;
+            }
+        }
+    </script>
+</body>
+</html>
