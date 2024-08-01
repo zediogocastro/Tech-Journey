@@ -8,6 +8,8 @@ numpy = "*"
 scikit-learn = "*"
 flask = "*"
 gunicorn = "*"
+flask-cors = "*"
+pyyaml = "*"
 
 [dev-packages]
 awsebcli = "*"

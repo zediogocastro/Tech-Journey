@@ -1,0 +1,58 @@
+fields:
+  gender:
+    default: "female"
+    type: "str"
+  seniorcitizen:
+    default: 0
+    type: "int"
+  partner:
+    default: "no"
+    type: "str"
+  dependents:
+    default: "no"
+    type: "str"
+  phoneservice:
+    default: "no"
+    type: "str"
+  multiplelines:
+    default: "no_phone_service"
+    type: "str"
+  internetservice:
+    default: "dsl"
+    type: "str"
+  onlinesecurity:
+    default: "no"
+    type: "str"
+  onlinebackup:
+    default: "yes"
+    type: "str"
+  deviceprotection:
+    default: "no"
+    type: "str"
+  techsupport:
+    default: "no"
+    type: "str"
+  streamingtv:
+    default: "no"
+    type: "str"
+  streamingmovies:
+    default: "no"
+    type: "str"
+  contract:
+    default: "month-to-month"
+    type: "str"
+  paperlessbilling:
+    default: "yes"
+    type: "str"
+  paymentmethod:
+    default: "electronic_check"
+    type: "str"
+  tenure:
+    default: 1
+    type: "int"
+  monthlycharges:
+    default: 29.85
+    type: "float"
+  totalcharges:
+    default: 29.85
+    type: "float"

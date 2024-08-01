@@ -10,6 +10,8 @@ RUN pipenv install --system --deploy
 RUN mkdir -p models
 COPY "predict.py" "./"
 COPY "models/model_C=1.0.bin" "./models/"
+COPY "templates" "./templates/"
+COPY "schema.yaml" "./"
 
 EXPOSE 9696
 
