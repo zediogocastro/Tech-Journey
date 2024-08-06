@@ -11,9 +11,3 @@ services:
     volumes:
       - ./postgres_data:/pgdata
 
-  adminer:
-    image: adminer:latest
-    restart: no # always
-    ports:
-      - 8080:8080
-
