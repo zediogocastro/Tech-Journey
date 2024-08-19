@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/workspaces/Tech-Journey/learn/learn_modules/text_analyzer")
+sys.path.append("/workspaces/Tech-Journey/learn/learn_modules/")
 
 from text_analyzer import Document
 
