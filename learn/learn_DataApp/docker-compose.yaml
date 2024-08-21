@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: adminpass
-      POSTGRES_DB: learn_data
+      POSTGRES_DB: postgres
       PGDATA: /pgdata
     ports:
       - "5432:5432"
