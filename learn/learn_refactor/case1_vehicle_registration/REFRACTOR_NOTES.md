@@ -171,3 +171,62 @@ def __str__(self) -> str:
 def __str__(self) -> str:
     return f"Id: {self.vehicle_id}. License plate: {self.license_plate}. Info: {self.info}"
 ```
+
+
+### 7. Using self when not needed
+
+```python
+# Before
+def generate_vehicle_id(self, length: int) -> str:
+        """Helper method for generating a random vehicle id."""
+        return "".join(choices(ascii_uppercase, k=length))
+
+    def generate_vehicle_license(self, _id: str) -> str:
+        """Helper method for generating a vehicle license number."""
+        return f"{_id[:2]}-{''.join(choices(digits, k=2))}-{''.join(choices(ascii_uppercase, k=2))}"
+```
+
+```python
+@staticmethod
+    def generate_vehicle_id(length: int) -> str:
+        """Helper method for generating a random vehicle id."""
+        return "".join(random.choices(string.ascii_uppercase, k=length))
+
+    @staticmethod
+    def generate_vehicle_license(_id: str) -> str:
+        """Helper method for generating a vehicle license number."""
+        digit_part = ''.join(random.choices(string.digits, k=2))
+        letter_part = ''.join(random.choices(string.ascii_uppercase, k=2))
+        return f"{_id[:2]}-{digit_part}-{letter_part}"
+
+```
+
+### 8. Not using a main function
+```python
+# Before
+if __name__ == "__main__":
+
+    # create a registry instance
+    registry = VehicleRegistry()
+
+    # add a couple of different vehicle models
+    registry.add_vehicle_model_info(
+        VehicleModelInfo("Tesla", "Model 3", 50_000, FuelType.ELECTRIC, 2021)
+    )
+```
+
+
+```python
+# After
+def main():
+    # create a registry instance
+    registry = VehicleRegistry()
+
+    # add a couple of different vehicle models
+    registry.add_vehicle_model_info(
+        VehicleModelInfo("Tesla", "Model 3", 50_000, FuelType.ELECTRIC, 2021)
+    )
+
+if __name__ == "__main__":
+    main()
+```
