@@ -10,3 +10,5 @@ dist/
 /learn/learn_DataApp/postgres_data
 /learn/learn_DataApp/data
 /learn/learn_ML_deployment/aws
+**/data
+/learn/stats/think_stats/stats

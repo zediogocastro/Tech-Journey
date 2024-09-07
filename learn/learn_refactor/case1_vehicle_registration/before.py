@@ -60,7 +60,7 @@ class VehicleModelInfo:
 class Vehicle:
     """Class representing a vehicle (electric or fossil fuel)."""
 
-    vehicle_id: int
+    vehicle_id: str
     license_plate: str
     info: VehicleModelInfo
 

@@ -59,7 +59,7 @@ class VehicleModelInfo:
 class Vehicle:
     """Class representing a vehicle (electric or fossil fuel)."""
 
-    vehicle_id: int
+    vehicle_id: str
     license_plate: str
     info: VehicleModelInfo
 
@@ -71,7 +71,7 @@ class VehicleRegistry:
     """Class representing a basic vehicle registration system."""
 
     def __init__(self) -> None:
-        self.vehicle_models: dict[Tuple[str, str], VehicleModelInfo] = {}   #list[VehicleModelInfo] = []
+        self.vehicle_models: dict[Tuple[str, str], VehicleModelInfo] = {}  
         self.online = True
 
     def add_vehicle_model_info(self, model_info: VehicleModelInfo) -> None:
@@ -94,7 +94,6 @@ class VehicleRegistry:
     def find_model_info(self, brand: str, model: str) -> Optional[VehicleModelInfo]:
         """Finds model info for a brand and model. If no info can be found, None is returned."""
         return self.vehicle_models.get((brand, model))
-        
         #for vehicle_info in self.vehicle_models:
         #    if vehicle_info.brand != brand or vehicle_info.model != model:
         #        continue
@@ -153,5 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    
