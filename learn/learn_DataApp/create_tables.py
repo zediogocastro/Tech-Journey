@@ -70,12 +70,13 @@ def execute_queries(cur: cursor, queries: List[str]) -> None:
     """
     for query in queries:
         cur.execute(query)
-        
 
 def main():
+    """Main function"""
     cur, conn = create_database()
 
     execute_queries(cur, queries=DROP_TABLE_QUERIES)
+    print('All tables were successfully deleted!')
     execute_queries(cur, queries=CREATE_TABLE_QUERIES)
     print('All tables were successfully created!')
 
