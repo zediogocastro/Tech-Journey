@@ -11,6 +11,19 @@ This project focuses on deploying ML Models. It covers:
 - **Environment Management:** Docker
 - **Deployment to the cloud:** AWS Elastic Beanstalk
 
+## ⚙️ Full Stack Data APP
+
+This projects focuses on developing a full Stack DataAPP. It covers:
+- * Container 
+
+## 🪚 Refactor
+I this project I take python files that are not follwoing best practices and refactor it.
+
+## 🧪 Test Driven Development
+For this project I explore test driven strategies.
+
+## 📊 Stats
+For this project I develop further my stats knowledge.
 
 ## 📦 Learn Modules
 
