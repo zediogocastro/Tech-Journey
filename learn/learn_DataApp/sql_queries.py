@@ -14,7 +14,7 @@ table_names = (
 PLAYERS_TABLE_CREATE = """
 CREATE TABLE IF NOT EXISTS players (
   player_id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL
+  name VARCHAR(100) NOT NULL UNIQUE
 );
 """
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS player_rankings (
   points INT,
   UNIQUE(player_id, ranking_date),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS matches (
   loser_sets INT CHECK (loser_sets >= 0),
   comments TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """
 
@@ -83,14 +83,45 @@ CREATE TABLE IF NOT EXISTS betting_odds (
 );
 """
 
+# INSERT RECORDS
+PLAYER_INSERT = """
+INSERT INTO players (name)
+VALUES (%s)
+ON CONFLICT (name) DO NOTHING;
+"""
+
 # QUERY LISTS
 CREATE_TABLE_QUERIES = [
     PLAYERS_TABLE_CREATE,
     PLAYER_RANKINGS_TABLE_CREATE,
-    MATCHES_TABLE_CREATE,
     TOURNAMENTS_TABLE_CREATE,
+    MATCHES_TABLE_CREATE,
     MATCH_SCORES_TABLE_CREATE,
     BETTING_ODDS_TABLE_CREATE
 ]
 
 DROP_TABLE_QUERIES = [f"DROP TABLE IF EXISTS {table}" for table in table_names]
+
+# Trigger Fuctions on Update
+TRIGGER_FUNCTION_CREATE = """
+CREATE OR REPLACE FUNCTION update_timestamp()
+RETURNS TRIGGER AS $$
+BEGIN
+   NEW.updated_at = NOW();
+   RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+"""
+
+TRIGGER_CREATE = """
+CREATE TRIGGER trigger_update_timestamp
+BEFORE UPDATE ON player_rankings
+FOR EACH ROW
+EXECUTE FUNCTION update_timestamp();
+"""
+
+# Comments regarding full implementation TODO
+"""Then o the create_tables.py one should had something like:
+execute_queries(cur, queries=[PLAYER_RANKINGS_TABLE_CREATE])
+execute_queries(cur, queries=[TRIGGER_FUNCTION_CREATE, TRIGGER_CREATE])
+"""
