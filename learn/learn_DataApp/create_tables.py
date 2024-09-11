@@ -80,6 +80,8 @@ def main():
     execute_queries(cur, queries=CREATE_TABLE_QUERIES)
     print('All tables were successfully created!')
 
+    conn.close()
+
 if __name__ == "__main__":
     main()
     

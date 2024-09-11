@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS matches (
 TOURNAMENTS_TABLE_CREATE= """
 CREATE TABLE IF NOT EXISTS tournaments (
   tournament_id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
+  name VARCHAR(100) NOT NULL UNIQUE,
   location VARCHAR(100),
   surface VARCHAR(50),
   series VARCHAR(50),
@@ -88,6 +88,55 @@ PLAYER_INSERT = """
 INSERT INTO players (name)
 VALUES (%s)
 ON CONFLICT (name) DO NOTHING;
+"""
+
+TOURNAMENT_INSERT = """
+INSERT INTO tournaments (name, location, surface, series, court)
+VALUES (%s, %s, %s, %s, %s)
+ON CONFLICT (name) DO NOTHING;
+"""
+
+MATCH_INSERT = """
+INSERT INTO matches (tournament_id, date, round, best_of, winner_id, loser_id, winner_rank, loser_rank, winner_pts, loser_pts, winner_sets, loser_sets, comments)
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+ON CONFLICT (tournament_id, date, round)  -- Use tournament, date, and round as a unique identifier for matches
+DO UPDATE SET
+    winner_id = EXCLUDED.winner_id, 
+    loser_id = EXCLUDED.loser_id, 
+    winner_rank = EXCLUDED.winner_rank,
+    loser_rank = EXCLUDED.loser_rank,
+    winner_pts = EXCLUDED.winner_pts,
+    loser_pts = EXCLUDED.loser_pts,
+    winner_sets = EXCLUDED.winner_sets,
+    loser_sets = EXCLUDED.loser_sets,
+    comments = EXCLUDED.comments;
+"""
+
+PLAYER_RANKING_INSERT = """
+INSERT INTO player_rankings (player_id, ranking_date, rank, points)
+VALUES (%s, %s, %s, %s)
+ON CONFLICT (player_id, ranking_date)
+DO UPDATE SET
+    rank = EXCLUDED.rank,
+    points = EXCLUDED.points;
+"""
+
+MATCH_SCORES_INSERT = """
+INSERT INTO match_scores (match_id, set_number, winner_score, loser_score)
+VALUES (%s, %s, %s, %s)
+"""
+
+BETTING_ODDS_INSERT = """
+INSERT INTO betting_odds (match_id, bookmaker, winner_odds, loser_odds)
+VALUES (%s, %s, %s, %s)
+"""
+
+BETTING_ODDS_INSERT = """
+INSERT INTO betting_odds (match_id, bookmaker, winner_odds, loser_odds)
+VALUES (%s, %s, %s, %s)
+ON CONFLICT (match_id, bookmaker) DO UPDATE SET
+    winner_odds = EXCLUDED.winner_odds,
+    loser_odds = EXCLUDED.loser_odds;
 """
 
 # QUERY LISTS
