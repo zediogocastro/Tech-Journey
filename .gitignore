@@ -1,14 +1,45 @@
-*.db
-*.egg-info
-*.csv
-*.bin
-*.pyc
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
 build/
 dist/
-/learn/learn_ML_deployment/data
-/learn/learn_ML_deployment/models
-/learn/learn_DataApp/postgres_data
-/learn/learn_DataApp/data
-/learn/learn_ML_deployment/aws
-**/data
-/learn/stats/think_stats/stats
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+.env/
+
+# Data files to exclude 
+*.db
+*.csv
+*.bin
+
+# Specific data folders to ignore
+/learn/learn_ML_deployment/data/
+/learn/learn_ML_deployment/models/
+/learn/learn_ML_deployment/aws/
+/learn/learn_DataApp/postgres_data/
+/learn/learn_DataApp/data/
+/learn/stats/think_stats/stats/
+
+# Ignore any 'data' folder recursively 
+/**/data/
+
+# Editor directories and system files
+.vscode/
+.idea/
+.DS_Store
+
+# Python compiled extensions
+*.pyd
+*.pyo
+
+# Logs and debug files 
+/*.log
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/

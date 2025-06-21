@@ -1,0 +1,28 @@
+<!-- client.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Stock Prices</title>
+</head>
+<body>
+  <h1>Live Stock Price</h1>
+  <p id="output">Waiting for data...</p>
+
+  <script>
+    const ws = new WebSocket("ws://localhost:8765");
+
+    ws.onmessage = function (event) {
+      const data = JSON.parse(event.data);
+      document.getElementById("output").innerText = `${data.symbol}: $${data.price}`;
+    };
+
+    ws.onopen = function () {
+      console.log("Connected to WebSocket server");
+    };
+
+    ws.onclose = function () {
+      console.log("WebSocket connection closed");
+    };
+  </script>
+</body>
+</html>
