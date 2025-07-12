@@ -1,0 +1,19 @@
+[project]
+name = "tech-journey"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "jose",email = "83618323+zediogocastro@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
